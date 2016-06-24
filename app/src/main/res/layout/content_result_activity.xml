@@ -79,5 +79,17 @@
         android:text="@string/avalicao"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonReturn"
+        android:layout_alignLeft="@+id/buttonReturn"
+        android:layout_alignRight="@+id/buttonReturn"
+        android:layout_alignStart="@+id/buttonReturn"
+        android:layout_below="@+id/tvValorAvaliacao"
+        android:onClick="registraAvaliacao"
+        android:text="@string/salvar" />
+
 
 </RelativeLayout>

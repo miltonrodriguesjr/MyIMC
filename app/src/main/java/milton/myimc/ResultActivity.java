@@ -1,6 +1,8 @@
 package milton.myimc;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,6 +15,9 @@ public class ResultActivity extends AppCompatActivity {
     TextView tvResultado, tvImc, tvValorAvaliacao;
     Button buttonReturn;
     RatingBar ratingBar;
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor shared;
+    String preference;
 
 
     @Override
@@ -26,6 +31,7 @@ public class ResultActivity extends AppCompatActivity {
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         tvValorAvaliacao = (TextView) findViewById(R.id.tvValorAvaliacao);
 
+        loadShared();
         addListenerOnRatingBar();
         showResult();
 
@@ -61,6 +67,22 @@ public class ResultActivity extends AppCompatActivity {
                 tvValorAvaliacao.setText(String.valueOf(avaliacao));
             }
         });
+    }
+
+    public void registraAvaliacao(View view) {
+
+        shared = sharedpreferences.edit();
+        shared.putString("avaliacao", String.valueOf(tvValorAvaliacao.getText()));
+        shared.commit();
+    }
+
+    public void loadShared() {
+
+
+        sharedpreferences = getSharedPreferences(preference,
+                Context.MODE_PRIVATE);
+
+        tvValorAvaliacao.setText(sharedpreferences.getString("avaliacao", ""));
     }
 
 //    public void addListenerOnButton() {
