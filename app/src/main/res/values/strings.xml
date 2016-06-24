@@ -6,4 +6,5 @@
     <string name="proximo">PRÓXIMO</string>
     <string name="peso">Digite seu peso</string>
     <string name="altura">Digite sua altura</string>
+    <string name="calcular">CALCULAR</string>
 </resources>

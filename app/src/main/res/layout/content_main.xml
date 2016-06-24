@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
 
     <ImageView
@@ -32,15 +32,42 @@
         android:layout_centerHorizontal="true"
         android:text="@string/nova_foto" />
 
+    <TextView
+        android:id="@+id/tvSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/editTextPeso"
         style="@style/edittext"
-        android:layout_alignEnd="@+id/foto"
-        android:layout_alignLeft="@+id/foto"
-        android:layout_alignRight="@+id/foto"
-        android:layout_alignStart="@+id/foto"
         android:layout_below="@+id/textView"
-        android:inputType="number" />
+        android:layout_toLeftOf="@+id/buttonNewPhoto"
+        android:layout_toStartOf="@+id/buttonNewPhoto"
+        android:inputType="number"
 
+        />
+
+    <EditText
+        android:id="@+id/editTextAltura"
+        style="@style/edittext"
+        android:layout_alignBottom="@+id/editTextPeso"
+        android:layout_below="@+id/textView"
+        android:layout_toRightOf="@+id/buttonNewPhoto"
+        android:hint="@string/altura"
+        android:inputType="numberDecimal" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        style="@style/spinner"
+        android:layout_below="@+id/editTextAltura"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/buttonCalcular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner"
+        android:layout_centerHorizontal="true"
+        android:text="@string/calcular" />
 
 </RelativeLayout>

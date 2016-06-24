@@ -8,22 +8,36 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
 
     String arquivo;
     Uri outputFileUri;
-    Button buttonNewPhoto;
+    Button buttonNewPhoto, buttonCalcular;
+    EditText editTextPeso, editTextAltura;
+    private ArrayList<ItemSpinner> itens;
+    private ItemSpinner itemSpinner;
+    private Spinner spinner;
+    private AdapterSpinner adapterSpinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         buttonNewPhoto = (Button) findViewById(R.id.buttonNewPhoto);
+        spinner = (Spinner) findViewById(R.id.spinner);
+        buttonCalcular = (Button) findViewById(R.id.buttonCalcular);
+        editTextPeso = (EditText) findViewById(R.id.editTextPeso);
+        editTextAltura = (EditText) findViewById(R.id.editTextAltura);
+        loadSpinner();
 
     }
 
@@ -49,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //Ao clicar na imagem que foi carregada
-//Não esquecer de incluir o atributo andoird:clickable="true" no <ImageView />
+    //Não esquecer de incluir o atributo andoird:clickable="true" no <ImageView />
     public void verImagem(View v) {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
@@ -71,6 +85,68 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.foto);
         arquivo = Environment.getExternalStorageDirectory() + "/Pictures/fotoMyIMC.jpg";
         imageView.setImageURI(Uri.parse(arquivo));
+    }
+
+    public void loadSpinner() {
+
+        itens = new ArrayList<ItemSpinner>();
+
+        ItemSpinner item1 = new ItemSpinner("Masculino");
+        ItemSpinner item2 = new ItemSpinner("Feminino");
+
+        itens.add(item1);
+        itens.add(item2);
+
+        //Cria o adapter
+        adapterSpinner = new AdapterSpinner(this, itens);
+
+        //Define o adapter
+        spinner.setAdapter(adapterSpinner);
+
+
+    }
+
+
+    public void calculaImc(View view) {
+
+        double peso = Double.parseDouble(editTextPeso.getText().toString());
+        double altura = Double.parseDouble(editTextAltura.getText().toString());
+        double imc;
+        String resultado;
+
+
+        if (spinner.getSelectedItem().toString().equals("Masculino")) {
+
+            imc = peso / altura;
+
+            if (imc < 20.7) {
+                resultado = "Abaixo do peso ideal";
+            } else if (imc <= 26.4) {
+                resultado = "No peso ideal";
+            } else if (imc <= 27.8) {
+                resultado = "Um pouco acima do peso ideal";
+            } else if (imc <= 31.1) {
+                resultado = "acima do peso ideal";
+            } else if (imc > 31.1) {
+                resultado = "Obeso";
+            }
+        } else {
+            imc = peso / altura;
+
+            if (imc < 19.1) {
+                resultado = "Abaixo do peso ideal";
+            } else if (imc <= 25.8) {
+                resultado = "No peso ideal";
+            } else if (imc <= 27.3) {
+                resultado = "Um pouco acima do peso ideal";
+            } else if (imc <= 32.3) {
+                resultado = "acima do peso ideal";
+            } else if (imc > 32.3) {
+                resultado = "Obeso";
+            }
+        }
+
+
     }
 
 }
