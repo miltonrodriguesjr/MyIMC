@@ -11,7 +11,7 @@
         android:layout_height="160dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/no_photo"
         android:clickable="true" />
 
@@ -32,17 +32,15 @@
         android:layout_centerHorizontal="true"
         android:text="@string/nova_foto" />
 
-    <Button
-        android:id="@+id/buttonNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <EditText
+        style="@style/edittext"
         android:layout_alignEnd="@+id/foto"
         android:layout_alignLeft="@+id/foto"
         android:layout_alignRight="@+id/foto"
         android:layout_alignStart="@+id/foto"
         android:layout_below="@+id/textView"
-        android:layout_marginTop="20dp"
-        android:text="@string/proximo" />
+        android:inputType="number" />
 
 
 </RelativeLayout>
