@@ -57,7 +57,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:numStars="5"
-        android:rating="3"
         android:stepSize="@android:integer/config_longAnimTime" />
 
     <TextView

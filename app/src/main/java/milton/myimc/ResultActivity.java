@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -74,6 +75,7 @@ public class ResultActivity extends AppCompatActivity {
         shared = sharedpreferences.edit();
         shared.putString("avaliacao", String.valueOf(tvValorAvaliacao.getText()));
         shared.commit();
+        Toast.makeText(ResultActivity.this, "AVALIAÇÃO REGISTRADA COM SUCESSO!", Toast.LENGTH_SHORT).show();
     }
 
     public void loadShared() {
@@ -81,8 +83,9 @@ public class ResultActivity extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(preference,
                 Context.MODE_PRIVATE);
-
+        Float av = Float.parseFloat(sharedpreferences.getString("avaliacao", ""));
         tvValorAvaliacao.setText(sharedpreferences.getString("avaliacao", ""));
+        ratingBar.setRating(av);
     }
 
 //    public void addListenerOnButton() {
