@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -117,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (spinner.getSelectedItem().toString().equals("Masculino")) {
 
-            imc = peso / altura;
+            imc = peso / (altura * altura);
 
             if (imc < 20.7) {
                 resultado = "Abaixo do peso ideal";
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                 resultado = "Obeso";
             }
         } else {
-            imc = peso / altura;
+            imc = peso / (altura * altura);
 
             if (imc < 19.1) {
                 resultado = "Abaixo do peso ideal";
@@ -147,11 +148,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //passar o resultado para a resultActivity
-        Bundle bundle = new Bundle();
-        bundle.putDouble("imc", imc);
-        bundle.putString("resultado", resultado);
+
+
         Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
-        intent.putExtras(bundle);
+
+        DecimalFormat df = new DecimalFormat("###,##0.00");
+        intent.putExtra("imc", String.valueOf(df.format(imc)));
+        intent.putExtra("resultado", resultado);
         startActivity(intent);
 
     }

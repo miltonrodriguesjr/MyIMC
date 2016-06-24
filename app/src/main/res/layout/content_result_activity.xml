@@ -17,7 +17,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonReturn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/textViewResultado"
@@ -26,6 +26,7 @@
         android:layout_alignRight="@+id/textViewResultado"
         android:layout_alignStart="@+id/textViewResultado"
         android:layout_marginBottom="160dp"
+        android:onClick="returnActivity"
         android:text="@string/voltar" />
 
     <TextView
