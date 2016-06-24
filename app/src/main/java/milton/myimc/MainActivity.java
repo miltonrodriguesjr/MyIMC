@@ -2,10 +2,10 @@ package milton.myimc;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     //Chamado quando acionado pelo usuário
     public void abrirCamera(View v) {
         //Cria uma intenção para abrir a camera fotográfica
@@ -47,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         //Abre a camera
         startActivityForResult(intent, RESULT_FIRST_USER);
     }
+
 
     //Ao clicar na imagem que foi carregada
 //Não esquecer de incluir o atributo andoird:clickable="true" no <ImageView />
@@ -68,10 +68,9 @@ public class MainActivity extends AppCompatActivity {
 
     //Ação para mostrar a foto no imageView
     public void carregaImagem() {
-        ImageView imageView = (ImageView) findViewById(R.id.photo);
+        ImageView imageView = (ImageView) findViewById(R.id.foto);
         arquivo = Environment.getExternalStorageDirectory() + "/Pictures/fotoMyIMC.jpg";
         imageView.setImageURI(Uri.parse(arquivo));
     }
-
 
 }

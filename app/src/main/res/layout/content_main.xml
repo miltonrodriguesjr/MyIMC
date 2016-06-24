@@ -6,9 +6,9 @@
 
 
     <ImageView
-        android:id="@+id/photo"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:id="@+id/foto"
+        android:layout_width="220dp"
+        android:layout_height="160dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="39dp"
@@ -19,9 +19,10 @@
         android:id="@+id/buttonNewPhoto"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_below="@+id/photo"
+        android:layout_below="@+id/foto"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/new_photo" />
+        android:background="@drawable/new_photo"
+        android:onClick="abrirCamera" />
 
     <TextView
         android:id="@+id/textView"
@@ -30,6 +31,18 @@
         android:layout_below="@+id/buttonNewPhoto"
         android:layout_centerHorizontal="true"
         android:text="@string/nova_foto" />
+
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/foto"
+        android:layout_alignLeft="@+id/foto"
+        android:layout_alignRight="@+id/foto"
+        android:layout_alignStart="@+id/foto"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="20dp"
+        android:text="@string/proximo" />
 
 
 </RelativeLayout>
