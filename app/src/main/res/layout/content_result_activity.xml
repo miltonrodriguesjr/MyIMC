@@ -20,12 +20,12 @@
         android:id="@+id/buttonReturn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textViewResultado"
-        android:layout_alignLeft="@+id/textViewResultado"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/textViewResultado"
-        android:layout_alignStart="@+id/textViewResultado"
-        android:layout_marginBottom="160dp"
+        android:layout_alignEnd="@+id/ratingBar"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignRight="@+id/ratingBar"
+        android:layout_alignStart="@+id/textView"
+        android:layout_below="@+id/tvValorAvaliacao"
+        android:layout_marginTop="45dp"
         android:onClick="returnActivity"
         android:text="@string/voltar" />
 
@@ -51,10 +51,33 @@
 
 
     <RatingBar
+        android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true"
+        android:numStars="5"
+        android:rating="3"
+        android:stepSize="@android:integer/config_longAnimTime" />
+
+    <TextView
+        android:id="@+id/tvValorAvaliacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingBar"
+        android:layout_toEndOf="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonReturn"
+        android:layout_alignLeft="@+id/ratingBar"
+        android:layout_alignStart="@+id/ratingBar"
+        android:text="@string/avalicao"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
 </RelativeLayout>
