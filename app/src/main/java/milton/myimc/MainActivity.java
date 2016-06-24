@@ -161,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
         shared = sharedpreferences.edit();
         shared.putString("peso", String.valueOf(peso));
         shared.putString("altura", String.valueOf(altura));
-
         shared.commit();
 
         Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
