@@ -6,33 +6,30 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
+        android:id="@+id/photo"
+        android:layout_width="300dp"
         android:layout_height="200dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="39dp"
-        android:background="@drawable/logo" />
+        android:background="@drawable/no_photo"
+        android:clickable="true" />
 
     <Button
-        android:id="@+id/btnNovaFoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_marginTop="30dp"
-        android:layout_toLeftOf="@+id/button"
-        android:text="@string/btn_nova_foto" />
+        android:id="@+id/buttonNewPhoto"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/photo"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/new_photo" />
 
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/btnNovaFoto"
-        android:layout_marginEnd="46dp"
-        android:layout_marginRight="46dp"
-        android:text="@string/btn_alterar_foto" />
+        android:layout_below="@+id/buttonNewPhoto"
+        android:layout_centerHorizontal="true"
+        android:text="@string/nova_foto" />
 
 
 </RelativeLayout>

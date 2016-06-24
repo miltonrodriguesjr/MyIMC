@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MyIMC</string>
 
-    <string name="btn_nova_foto">NOVA FOTO</string>
+    <string name="nova_foto">NOVA FOTO</string>
     <string name="btn_alterar_foto">ALTERAR FOTO</string>
 
 
