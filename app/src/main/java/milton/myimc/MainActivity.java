@@ -1,6 +1,8 @@
 package milton.myimc;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -19,15 +21,18 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
 
-    String arquivo;
+    String arquivo, preference;
     Uri outputFileUri;
     Button buttonNewPhoto, buttonCalcular;
     EditText editTextPeso, editTextAltura;
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor shared;
+    double peso, altura, imc;
+    String resultado;
     private ArrayList<ItemSpinner> itens;
     private ItemSpinner itemSpinner;
     private Spinner spinner;
     private AdapterSpinner adapterSpinner;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,10 @@ public class MainActivity extends AppCompatActivity {
         buttonCalcular = (Button) findViewById(R.id.buttonCalcular);
         editTextPeso = (EditText) findViewById(R.id.editTextPeso);
         editTextAltura = (EditText) findViewById(R.id.editTextAltura);
+
+        loadShared();
         loadSpinner();
+
 
     }
 
@@ -110,10 +118,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculaImc(View view) {
 
-        double peso = Double.parseDouble(editTextPeso.getText().toString());
-        double altura = Double.parseDouble(editTextAltura.getText().toString());
-        double imc;
-        String resultado = "";
+        peso = Double.parseDouble(editTextPeso.getText().toString());
+        altura = Double.parseDouble(editTextAltura.getText().toString());
+        imc = 0;
+        resultado = "";
 
 
         if (spinner.getSelectedItem().toString().equals("Masculino")) {
@@ -150,6 +158,12 @@ public class MainActivity extends AppCompatActivity {
         //passar o resultado para a resultActivity
 
 
+        shared = sharedpreferences.edit();
+        shared.putString("peso", String.valueOf(peso));
+        shared.putString("altura", String.valueOf(altura));
+
+        shared.commit();
+
         Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
 
         DecimalFormat df = new DecimalFormat("###,##0.00");
@@ -157,6 +171,16 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("resultado", resultado);
         startActivity(intent);
 
+
+    }
+
+    public void loadShared() {
+
+        sharedpreferences = getSharedPreferences(preference,
+                Context.MODE_PRIVATE);
+
+        editTextAltura.setText(sharedpreferences.getString("altura", String.valueOf(altura)));
+        editTextPeso.setText(sharedpreferences.getString("peso", String.valueOf(peso)));
     }
 
 }
