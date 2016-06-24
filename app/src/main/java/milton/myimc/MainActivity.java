@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         double peso = Double.parseDouble(editTextPeso.getText().toString());
         double altura = Double.parseDouble(editTextAltura.getText().toString());
         double imc;
-        String resultado;
+        String resultado = "";
 
 
         if (spinner.getSelectedItem().toString().equals("Masculino")) {
@@ -146,6 +146,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        //passar o resultado para a resultActivity
+        Bundle bundle = new Bundle();
+        bundle.putDouble("imc", imc);
+        bundle.putString("resultado", resultado);
+        Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
 
     }
 

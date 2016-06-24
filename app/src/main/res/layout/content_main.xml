@@ -25,7 +25,7 @@
         android:onClick="abrirCamera" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonNewPhoto"
@@ -40,7 +40,7 @@
     <EditText
         android:id="@+id/editTextPeso"
         style="@style/edittext"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/textViewResultado"
         android:layout_toLeftOf="@+id/buttonNewPhoto"
         android:layout_toStartOf="@+id/buttonNewPhoto"
         android:inputType="number"
@@ -51,7 +51,7 @@
         android:id="@+id/editTextAltura"
         style="@style/edittext"
         android:layout_alignBottom="@+id/editTextPeso"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/textViewResultado"
         android:layout_toRightOf="@+id/buttonNewPhoto"
         android:hint="@string/altura"
         android:inputType="numberDecimal" />
